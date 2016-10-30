@@ -98,7 +98,7 @@ const Details = React.createClass({
             </div>
             <div className='list'>
               {nextShows.map((show) => {
-                return <ShowCardHorizontal {...show} />
+                return <ShowCardHorizontal {...show} key={show.imdbID} />
               })}
             </div>
 
@@ -117,7 +117,7 @@ const Details = React.createClass({
             </div>
             <div className='list'>
               {recommendedShows.map((show) => {
-                return <ShowCardHorizontal {...show} />
+                return <ShowCardHorizontal {...show} key={show.imdbID} />
               })}
             </div>
 

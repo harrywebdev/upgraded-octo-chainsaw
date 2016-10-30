@@ -20,7 +20,7 @@ const ShowCardHorizontal = (props) => (
       <div className='col-lg-6 col-sm-6'>
         <div className='v-desc'>
           {props.title}<br />
-          <small className='text-muted'>{`${props.description.substring(0, 100)}...`}</small>
+          <small className='text-muted'>{props.description}</small>
         </div>
       </div>
       <div className='clearfix'></div>

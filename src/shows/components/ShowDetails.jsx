@@ -1,7 +1,7 @@
 const React = require('react')
 const BodyClassName = require('react-body-classname')
 const {arrayOf, object, string} = React.PropTypes
-const ShowCardHorizontal = require('./ShowCardHorizontal')
+const SidebarShows = require('./SidebarShows')
 
 const ShowDetails = React.createClass({
   propTypes: {
@@ -66,17 +66,8 @@ const ShowDetails = React.createClass({
           </div>
 
           <div className='col-lg-4 col-xs-12 col-sm-12'>
-            <div className='caption'>
-              <div className='left'>
-                <a>Up Next</a>
-              </div>
-              <div className='clearfix'></div>
-            </div>
-            <div className='list'>
-              {this.props.nextShows.map((show) => {
-                return <ShowCardHorizontal {...show} key={show.imdbID} />
-              })}
-            </div>
+
+            <SidebarShows heading='Up Next' shows={this.props.nextShows} />
 
             <div className='adblock'>
               <div className='img'>
@@ -85,17 +76,7 @@ const ShowDetails = React.createClass({
               </div>
             </div>
 
-            <div className='caption'>
-              <div className='left'>
-                <a href='#'>Recommended Shows</a>
-              </div>
-              <div className='clearfix'></div>
-            </div>
-            <div className='list'>
-              {this.props.recommendedShows.map((show) => {
-                return <ShowCardHorizontal {...show} key={show.imdbID} />
-              })}
-            </div>
+            <SidebarShows heading='Recommended Shows' shows={this.props.recommendedShows} />
 
           </div>
         </div>

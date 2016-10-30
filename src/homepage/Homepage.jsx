@@ -1,11 +1,12 @@
 const React = require('react')
+const {connector} = require('../app/store')
+const {arrayOf, object, string} = React.PropTypes
 const ShowCard = require('../shows/ShowCard')
-const {arrayOf, object} = React.PropTypes
-const {shows} = require('../../data/shows.json')
 
 const Homepage = React.createClass({
   propTypes: {
-    shows: arrayOf(object)
+    shows: arrayOf(object),
+    searchTerm: string
   },
   render () {
     return (
@@ -23,15 +24,16 @@ const Homepage = React.createClass({
             </div>
             <div className='cb-content videolist'>
               <div className='row'>
-                {shows
+                {this.props.shows
+                  .filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
                   .map((show, index) => {
                     const clearfix = index && !((index + 1) % 4)
                       ? <div className='clearfix visible-md visible-lg' />
                       : (index && !((index + 1) % 2) ? <div className='clearfix visible-sm' /> : '')
                     return (
-                      <div>
+                      <div key={show.imdbID}>
                         <div className='col-lg-3 col-sm-6'>
-                          <ShowCard {...show} key={show.imdbID} />
+                          <ShowCard {...show} />
                         </div>
                         {clearfix}
                       </div>
@@ -46,4 +48,4 @@ const Homepage = React.createClass({
   }
 })
 
-module.exports = Homepage
+module.exports = connector(Homepage)

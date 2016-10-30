@@ -1,7 +1,9 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const {Router, hashHistory} = require('react-router')
+const {Provider} = require('react-redux')
 const Layout = require('./Layout')
+const {store} = require('./store')
 
 // shim for node.js because server-side asynchronous routes don't make sense
 if (typeof module !== 'undefined' && module.require) {
@@ -25,7 +27,9 @@ const rootRoute = {
 const App = React.createClass({
   render () {
     return (
-      <Router history={hashHistory} routes={rootRoute} />
+      <Provider store={store}>
+        <Router history={hashHistory} routes={rootRoute} />
+      </Provider>
     )
   }
 })

@@ -1,7 +1,7 @@
 const React = require('react')
 const axios = require('axios')
 const {arrayOf, object} = React.PropTypes
-const {connector} = require('../../app/store')
+import {connect} from 'react-redux'
 const ShowDetails = require('../components/ShowDetails')
 
 const ShowDetailsContainer = React.createClass({
@@ -56,4 +56,8 @@ const ShowDetailsContainer = React.createClass({
   }
 })
 
-module.exports = connector(ShowDetailsContainer)
+const mapStateToProps = (state) => ({
+  shows: state.shows
+})
+
+module.exports = connect(mapStateToProps)(ShowDetailsContainer)

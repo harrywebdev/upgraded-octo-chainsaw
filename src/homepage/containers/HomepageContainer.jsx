@@ -1,5 +1,5 @@
 const React = require('react')
-const {connector} = require('../../app/store')
+import {connect} from 'react-redux'
 const {arrayOf, object, string} = React.PropTypes
 const Homepage = require('../components/Homepage')
 
@@ -17,4 +17,9 @@ const HomepageContainer = React.createClass({
   }
 })
 
-module.exports = connector(HomepageContainer)
+const mapStateToProps = (state) => ({
+  searchTerm: state.searchTerm,
+  shows: state.shows
+})
+
+module.exports = connect(mapStateToProps)(HomepageContainer)

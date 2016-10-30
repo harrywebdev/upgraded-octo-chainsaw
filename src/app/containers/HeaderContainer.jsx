@@ -1,6 +1,9 @@
 const React = require('react')
 const {string, func} = React.PropTypes
-const {connector} = require('../store')
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as actions from '../actions'
+
 const Header = require('../components/Header')
 
 const HeaderContainer = React.createClass({
@@ -18,4 +21,12 @@ const HeaderContainer = React.createClass({
   }
 })
 
-module.exports = connector(HeaderContainer)
+const mapStateToProps = (state) => ({
+  searchTerm: state.searchTerm
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(actions, dispatch)
+}
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)

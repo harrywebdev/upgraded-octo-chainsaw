@@ -18,6 +18,9 @@ const ShowDetails = React.createClass({
       expandDescription: true
     }
   },
+  expandOrCollapseDescription () {
+    this.setState({expandDescription: !this.state.expandDescription})
+  },
   render () {
     let rating
     if (this.props.rating) {

@@ -16,6 +16,14 @@ const ShowDetailsContainer = React.createClass({
     }
   },
   componentDidMount () {
+    this.fetchRating()
+  },
+  componentDidUpdate (prevProps) {
+    if (prevProps.params.id !== this.props.params.id) {
+      this.fetchRating()
+    }
+  },
+  fetchRating () {
     axios.get(`http://www.omdbapi.com/?i=${this.props.params.id}`)
       .then((response) => {
         this.setState({omdbData: response.data})

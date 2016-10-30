@@ -1,8 +1,8 @@
-const React = require('react')
-const {element} = React.PropTypes
-const Header = require('../containers/HeaderContainer')
-const Footer = require('./Footer')
+import React from 'react'
+import Header from '../containers/HeaderContainer'
+import Footer from './Footer'
 
+const {element} = React.PropTypes
 const PropTypes = {
   children: element
 }
@@ -22,4 +22,4 @@ const Layout = (props) => (
 
 Layout.propTypes = PropTypes
 
-module.exports = Layout
+export default Layout

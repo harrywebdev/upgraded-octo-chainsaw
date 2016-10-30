@@ -1,7 +1,8 @@
-const React = require('react')
-const BodyClassName = require('react-body-classname')
+import React from 'react'
+import BodyClassName from 'react-body-classname'
+import SidebarShows from './SidebarShows'
+
 const {arrayOf, object, string} = React.PropTypes
-const SidebarShows = require('./SidebarShows')
 
 const ShowDetails = React.createClass({
   propTypes: {
@@ -88,4 +89,4 @@ const ShowDetails = React.createClass({
   }
 })
 
-module.exports = ShowDetails
+export default ShowDetails

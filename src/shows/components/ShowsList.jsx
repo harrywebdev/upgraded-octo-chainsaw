@@ -1,5 +1,6 @@
-const React = require('react')
-const ShowCardBox = require('./ShowCardBox')
+import React from 'react'
+import ShowCardBox from './ShowCardBox'
+
 const {arrayOf, object} = React.PropTypes
 
 const ShowsList = React.createClass({
@@ -28,4 +29,4 @@ const ShowsList = React.createClass({
   }
 })
 
-module.exports = ShowsList
+export default ShowsList

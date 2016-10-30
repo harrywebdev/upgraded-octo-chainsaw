@@ -1,7 +1,8 @@
-const React = require('react')
+import React from 'react'
 import {connect} from 'react-redux'
+import Homepage from '../components/Homepage'
+
 const {arrayOf, object, string} = React.PropTypes
-const Homepage = require('../components/Homepage')
 
 const HomepageContainer = React.createClass({
   propTypes: {
@@ -22,4 +23,4 @@ const mapStateToProps = (state) => ({
   shows: state.shows
 })
 
-module.exports = connect(mapStateToProps)(HomepageContainer)
+export default connect(mapStateToProps)(HomepageContainer)

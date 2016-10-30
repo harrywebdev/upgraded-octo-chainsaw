@@ -1,7 +1,7 @@
-const React = require('react')
-const {Link} = require('react-router')
-const {string} = React.PropTypes
+import React from 'react'
+import {Link} from 'react-router'
 
+const {string} = React.PropTypes
 const PropTypes = {
   poster: string.isRequired,
   title: string.isRequired,
@@ -31,4 +31,4 @@ const ShowCardBox = (props) => (
 
 ShowCardBox.propTypes = PropTypes
 
-module.exports = ShowCardBox
+export default ShowCardBox

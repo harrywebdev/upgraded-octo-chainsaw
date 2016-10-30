@@ -1,10 +1,10 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
-const {Router, applyRouterMiddleware, hashHistory} = require('react-router')
-const {Provider} = require('react-redux')
-const {useScroll} = require('react-router-scroll')
-const Layout = require('./components/Layout')
-const {store} = require('./store')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Router, applyRouterMiddleware, hashHistory} from 'react-router'
+import {Provider} from 'react-redux'
+import {useScroll} from 'react-router-scroll'
+import Layout from './components/Layout'
+import {store} from './store'
 
 // shim for node.js because server-side asynchronous routes don't make sense
 if (typeof module !== 'undefined' && module.require) {
@@ -19,7 +19,7 @@ const rootRoute = {
   indexRoute: {
     getComponent (location, cb) {
       require.ensure([], () => {
-        cb(null, require('../homepage/containers/HomepageContainer'))
+        cb(null, require('../homepage/containers/HomepageContainer').default)
       })
     }
   },
@@ -28,7 +28,7 @@ const rootRoute = {
       path: '/details/:id',
       getComponent (location, cb) {
         require.ensure([], () => {
-          cb(null, require('../shows/containers/ShowDetailsContainer'))
+          cb(null, require('../shows/containers/ShowDetailsContainer').default)
         })
       }
     }

@@ -1,6 +1,6 @@
-const redux = require('redux')
-const reactRedux = require('react-redux')
-const {shows} = require('../../data/shows')
+import * as redux from 'redux'
+import * as reactRedux from 'react-redux'
+import {shows} from '../../data/shows'
 import * as actions from './actions'
 
 const initialState = {
@@ -32,4 +32,4 @@ const store = redux.createStore(rootReducer, initialState, redux.compose(
 
 const connector = reactRedux.connect()
 
-module.exports = {connector, store}
+export {connector, store}

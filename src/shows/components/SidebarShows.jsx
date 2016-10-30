@@ -1,7 +1,7 @@
-const React = require('react')
-const {string, arrayOf, object} = React.PropTypes
-const ShowCardHorizontal = require('./ShowCardHorizontal')
+import React from 'react'
+import ShowCardHorizontal from './ShowCardHorizontal'
 
+const {string, arrayOf, object} = React.PropTypes
 const PropTypes = {
   heading: string.isRequired,
   shows: arrayOf(object).isRequired
@@ -27,4 +27,4 @@ const SidebarShows = (props) => (
 
 SidebarShows.propTypes = PropTypes
 
-module.exports = SidebarShows
+export default SidebarShows

@@ -1,7 +1,7 @@
-const React = require('react')
-const {Link} = require('react-router')
-const {string} = React.PropTypes
+import React from 'react'
+import {Link} from 'react-router'
 
+const {string} = React.PropTypes
 const PropTypes = {
   poster: string.isRequired,
   title: string.isRequired,
@@ -30,4 +30,4 @@ const ShowCardHorizontal = (props) => (
 
 ShowCardHorizontal.propTypes = PropTypes
 
-module.exports = ShowCardHorizontal
+export default ShowCardHorizontal

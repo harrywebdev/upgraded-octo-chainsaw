@@ -1,5 +1,5 @@
-const React = require('react')
-const {Link} = require('react-router')
+import React from 'react'
+import {Link} from 'react-router'
 
 const Footer = () => (
   <footer>
@@ -40,4 +40,4 @@ const Footer = () => (
   </footer>
 )
 
-module.exports = Footer
+export default Footer

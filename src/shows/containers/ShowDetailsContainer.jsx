@@ -1,8 +1,9 @@
-const React = require('react')
-const axios = require('axios')
-const {arrayOf, object} = React.PropTypes
+import React from 'react'
+import axios from 'axios'
 import {connect} from 'react-redux'
-const ShowDetails = require('../components/ShowDetails')
+import ShowDetails from '../components/ShowDetails'
+
+const {arrayOf, object} = React.PropTypes
 
 const ShowDetailsContainer = React.createClass({
   propTypes: {
@@ -60,4 +61,4 @@ const mapStateToProps = (state) => ({
   shows: state.shows
 })
 
-module.exports = connect(mapStateToProps)(ShowDetailsContainer)
+export default connect(mapStateToProps)(ShowDetailsContainer)

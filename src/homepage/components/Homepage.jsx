@@ -1,7 +1,7 @@
-const React = require('react')
-const {arrayOf, object} = React.PropTypes
-const ShowsList = require('../../shows/components/ShowsList')
+import React from 'react'
+import ShowsList from '../../shows/components/ShowsList'
 
+const {arrayOf, object} = React.PropTypes
 const PropTypes = {
   shows: arrayOf(object)
 }
@@ -29,4 +29,4 @@ const Homepage = (props) => (
 
 Homepage.propTypes = PropTypes
 
-module.exports = Homepage
+export default Homepage

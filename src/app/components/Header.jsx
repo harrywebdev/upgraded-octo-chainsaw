@@ -1,5 +1,6 @@
-const React = require('react')
-const {Link} = require('react-router')
+import React from 'react'
+import {Link} from 'react-router'
+
 const {string, func} = React.PropTypes
 
 const Header = React.createClass({
@@ -39,4 +40,4 @@ const Header = React.createClass({
   }
 })
 
-module.exports = Header
+export default Header

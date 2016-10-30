@@ -1,8 +1,9 @@
 const React = require('react')
 const axios = require('axios')
-const {connector} = require('../app/store')
-const {arrayOf, object} = React.PropTypes
 const BodyClassName = require('react-body-classname')
+const {arrayOf, object} = React.PropTypes
+const {connector} = require('../app/store')
+const ShowCardHorizontal = require('./ShowCardHorizontal')
 
 const Details = React.createClass({
   propTypes: {
@@ -27,11 +28,19 @@ const Details = React.createClass({
   assignShow (id) {
     return this.props.shows.filter((show) => show.imdbID === id)[0]
   },
+  getNextShows (id) {
+    return this.props.shows.filter((show) => show.imdbID !== id).slice(0, 3)
+  },
+  getRecommendedShows (id) {
+    return this.props.shows.filter((show) => show.imdbID !== id).slice(3, 5)
+  },
   expandOrCollapseDescription () {
     this.setState({expandDescription: !this.state.expandDescription})
   },
   render () {
     const {title, description, year, trailer} = this.assignShow(this.props.params.id)
+    const nextShows = this.getNextShows(this.props.params.id)
+    const recommendedShows = this.getRecommendedShows(this.props.params.id)
 
     let rating
     if (this.state.omdbData.imdbRating) {
@@ -44,7 +53,7 @@ const Details = React.createClass({
     }
 
     return (
-      <BodyClassName className="single-video">
+      <BodyClassName className='single-video'>
         <div className='row'>
           <div className='col-lg-8 col-xs-12 col-sm-12'>
             <div className='sv-video'>
@@ -77,14 +86,41 @@ const Details = React.createClass({
                 </div>
               </div>
 
-              <div className='caption'>
-                <div className='left'>
-                  <a href='#'>Similar Videos</a>
-                </div>
-                <div className='clearfix'></div>
-              </div>
-
             </div>
+          </div>
+
+          <div className='col-lg-4 col-xs-12 col-sm-12'>
+            <div className='caption'>
+              <div className='left'>
+                <a>Up Next</a>
+              </div>
+              <div className='clearfix'></div>
+            </div>
+            <div className='list'>
+              {nextShows.map((show) => {
+                return <ShowCardHorizontal {...show} />
+              })}
+            </div>
+
+            <div className='adblock'>
+              <div className='img'>
+                Google AdSense<br />
+                336 x 280
+              </div>
+            </div>
+
+            <div className='caption'>
+              <div className='left'>
+                <a href='#'>Recommended Shows</a>
+              </div>
+              <div className='clearfix'></div>
+            </div>
+            <div className='list'>
+              {recommendedShows.map((show) => {
+                return <ShowCardHorizontal {...show} />
+              })}
+            </div>
+
           </div>
         </div>
       </BodyClassName>

@@ -19,7 +19,7 @@ const rootRoute = {
   indexRoute: {
     getComponent (location, cb) {
       require.ensure([], () => {
-        cb(null, require('../homepage/Homepage'))
+        cb(null, require('../homepage/containers/HomepageContainer'))
       })
     }
   },

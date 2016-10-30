@@ -21,7 +21,17 @@ const rootRoute = {
         cb(null, require('../homepage/Homepage'))
       })
     }
-  }
+  },
+  childRoutes: [
+    {
+      path: '/details/:id',
+      getComponent (location, cb) {
+        require.ensure([], () => {
+          cb(null, require('../shows/Details'))
+        })
+      }
+    }
+  ]
 }
 
 const App = React.createClass({

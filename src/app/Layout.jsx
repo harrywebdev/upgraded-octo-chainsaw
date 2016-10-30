@@ -1,8 +1,12 @@
 const React = require('react')
+const Header = require('./Header')
 
 const Layout = (props) => (
-  <div className='container-fluid'>
-    {props.children}
+  <div>
+    <Header />
+    <div className='container-fluid'>
+      {props.children}
+    </div>
   </div>
 )
 

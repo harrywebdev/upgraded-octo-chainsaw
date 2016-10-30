@@ -15,9 +15,8 @@ const rootRoute = {
   path: '/',
   indexRoute: {
     getComponent (location, cb) {
-      require.ensure([], (error) => {
+      require.ensure([], () => {
         cb(null, require('../homepage/Homepage'))
-        console.error('route error', error)
       })
     }
   }

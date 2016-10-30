@@ -1,15 +1,11 @@
 const React = require('react')
 const {Link} = require('react-router')
 const {string, func} = React.PropTypes
-const {connector} = require('../app/store')
 
 const Header = React.createClass({
   propTypes: {
     searchTerm: string,
-    setSearchTerm: func
-  },
-  handleSearchTermEvent (event) {
-    this.props.setSearchTerm(event.target.value)
+    handleSearchTermEvent: func
   },
   render () {
     return (
@@ -27,7 +23,7 @@ const Header = React.createClass({
                     <div className='topsearch'>
                       <div className='input-group'>
                         <span className='input-group-addon' id='sizing-addon2'><i className='fa fa-search' /></span>
-                        <input value={this.props.searchTerm} type='text' className='form-control' placeholder='Search for a movie...' onChange={this.handleSearchTermEvent} autoFocus='' />
+                        <input value={this.props.searchTerm} type='text' className='form-control' placeholder='Search for a movie...' onChange={this.props.handleSearchTermEvent} autoFocus='' />
                         <div className='input-group-btn' style={{width: '100%'}} />
                       </div>
                     </div>
@@ -43,4 +39,4 @@ const Header = React.createClass({
   }
 })
 
-module.exports = connector(Header)
+module.exports = Header

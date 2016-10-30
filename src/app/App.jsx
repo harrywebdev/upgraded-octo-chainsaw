@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom')
 const {Router, applyRouterMiddleware, hashHistory} = require('react-router')
 const {Provider} = require('react-redux')
 const {useScroll} = require('react-router-scroll')
-const Layout = require('./Layout')
+const Layout = require('./components/Layout')
 const {store} = require('./store')
 
 // shim for node.js because server-side asynchronous routes don't make sense

@@ -1,6 +1,11 @@
 const React = require('react')
-const Header = require('./Header')
+const {element} = React.PropTypes
+const Header = require('../containers/HeaderContainer')
 const Footer = require('./Footer')
+
+const PropTypes = {
+  children: element
+}
 
 const Layout = (props) => (
   <div>
@@ -15,10 +20,6 @@ const Layout = (props) => (
   </div>
 )
 
-const {element} = React.PropTypes
-
-Layout.propTypes = {
-  children: element
-}
+Layout.propTypes = PropTypes
 
 module.exports = Layout

@@ -1,7 +1,8 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-const {Router, hashHistory} = require('react-router')
+const {Router, applyRouterMiddleware, hashHistory} = require('react-router')
 const {Provider} = require('react-redux')
+const {useScroll} = require('react-router-scroll')
 const Layout = require('./Layout')
 const {store} = require('./store')
 
@@ -38,7 +39,7 @@ const App = React.createClass({
   render () {
     return (
       <Provider store={store}>
-        <Router history={hashHistory} routes={rootRoute} />
+        <Router history={hashHistory} routes={rootRoute} render={applyRouterMiddleware(useScroll())} />
       </Provider>
     )
   }

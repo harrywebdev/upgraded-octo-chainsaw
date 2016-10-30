@@ -29,10 +29,10 @@ const Details = React.createClass({
     return this.props.shows.filter((show) => show.imdbID === id)[0]
   },
   getNextShows (id) {
-    return this.props.shows.filter((show) => show.imdbID !== id).slice(0, 3)
+    return this.props.shows.filter((show) => show.imdbID !== id).slice(0, 2)
   },
   getRecommendedShows (id) {
-    return this.props.shows.filter((show) => show.imdbID !== id).slice(3, 5)
+    return this.props.shows.filter((show) => show.imdbID !== id).slice(2, 5)
   },
   expandOrCollapseDescription () {
     this.setState({expandDescription: !this.state.expandDescription})

@@ -1,78 +1,54 @@
 const React = require('react')
-const axios = require('axios')
 const BodyClassName = require('react-body-classname')
-const {arrayOf, object} = React.PropTypes
-const {connector} = require('../app/store')
+const {arrayOf, object, string} = React.PropTypes
 const ShowCardHorizontal = require('./ShowCardHorizontal')
 
-const Details = React.createClass({
+const ShowDetails = React.createClass({
   propTypes: {
-    params: object.isRequired,
-    shows: arrayOf(object).isRequired
+    title: string.isRequired,
+    description: string.isRequired,
+    year: string.isRequired,
+    trailer: string.isRequired,
+    rating: string,
+    nextShows: arrayOf(object).isRequired,
+    recommendedShows: arrayOf(object).isRequired
   },
   getInitialState () {
     return {
-      omdbData: {},
       expandDescription: true
     }
   },
-  componentDidMount () {
-    axios.get(`http://www.omdbapi.com/?i=${this.props.params.id}`)
-      .then((response) => {
-        this.setState({omdbData: response.data})
-      })
-      .catch((error) => {
-        console.error('axios error', error)
-      })
-  },
-  assignShow (id) {
-    return this.props.shows.filter((show) => show.imdbID === id)[0]
-  },
-  getNextShows (id) {
-    return this.props.shows.filter((show) => show.imdbID !== id).slice(0, 2)
-  },
-  getRecommendedShows (id) {
-    return this.props.shows.filter((show) => show.imdbID !== id).slice(2, 5)
-  },
-  expandOrCollapseDescription () {
-    this.setState({expandDescription: !this.state.expandDescription})
-  },
   render () {
-    const {title, description, year, trailer} = this.assignShow(this.props.params.id)
-    const nextShows = this.getNextShows(this.props.params.id)
-    const recommendedShows = this.getRecommendedShows(this.props.params.id)
-
     let rating
-    if (this.state.omdbData.imdbRating) {
+    if (this.props.rating) {
       rating = (
         <div>
           <h4>IMDB Rating:</h4>
-          <p>{this.state.omdbData.imdbRating}</p>
+          <p>{this.props.rating}</p>
         </div>
       )
     }
-
     return (
       <BodyClassName className='single-video'>
         <div className='row'>
           <div className='col-lg-8 col-xs-12 col-sm-12'>
             <div className='sv-video'>
               <div className='embed-responsive embed-responsive-16by9'>
-                <iframe src={`https://www.youtube-nocookie.com/embed/${trailer}?rel=0&amp;controls=0&amp;showinfo=0`} frameBorder='0' className='embed-responsive-item'></iframe>
+                <iframe src={`https://www.youtube-nocookie.com/embed/${this.props.trailer}?rel=0&amp;controls=0&amp;showinfo=0`} frameBorder='0' className='embed-responsive-item'></iframe>
               </div>
             </div>
             <div className='author'>
-              <h1 style={{padding: 0}}>{title}</h1>
+              <h1 style={{padding: 0}}>{this.props.title}</h1>
             </div>
             <div className='info'>
               <div className={`description collapse ${this.state.expandDescription ? 'in' : ''}`}>
                 <h4>About:</h4>
-                <p>{description}</p>
+                <p>{this.props.description}</p>
 
                 {rating}
 
                 <h4>Release Date:</h4>
-                <p>{year}</p>
+                <p>{this.props.year}</p>
               </div>
 
               <div className='showless' onClick={this.expandOrCollapseDescription}>
@@ -97,7 +73,7 @@ const Details = React.createClass({
               <div className='clearfix'></div>
             </div>
             <div className='list'>
-              {nextShows.map((show) => {
+              {this.props.nextShows.map((show) => {
                 return <ShowCardHorizontal {...show} key={show.imdbID} />
               })}
             </div>
@@ -116,7 +92,7 @@ const Details = React.createClass({
               <div className='clearfix'></div>
             </div>
             <div className='list'>
-              {recommendedShows.map((show) => {
+              {this.props.recommendedShows.map((show) => {
                 return <ShowCardHorizontal {...show} key={show.imdbID} />
               })}
             </div>
@@ -128,4 +104,4 @@ const Details = React.createClass({
   }
 })
 
-module.exports = connector(Details)
+module.exports = ShowDetails

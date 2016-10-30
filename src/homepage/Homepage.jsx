@@ -1,7 +1,7 @@
 const React = require('react')
 const {connector} = require('../app/store')
 const {arrayOf, object, string} = React.PropTypes
-const ShowsList = require('../shows/ShowsList')
+const ShowsList = require('../shows/components/ShowsList')
 
 const Homepage = React.createClass({
   propTypes: {

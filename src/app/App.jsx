@@ -28,7 +28,7 @@ const rootRoute = {
       path: '/details/:id',
       getComponent (location, cb) {
         require.ensure([], () => {
-          cb(null, require('../shows/Details'))
+          cb(null, require('../shows/containers/ShowDetailsContainer'))
         })
       }
     }

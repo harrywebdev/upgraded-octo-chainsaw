@@ -1,7 +1,16 @@
 const React = require('react')
 const {Link} = require('react-router')
+const {string} = React.PropTypes
 
-const ShowCard = (props) => (
+const PropTypes = {
+  poster: string.isRequired,
+  title: string.isRequired,
+  year: string.isRequired,
+  description: string,
+  imdbID: string.isRequired
+}
+
+const ShowCardBox = (props) => (
   <Link to={`/details/${props.imdbID}`}>
     <div className='videoitem'>
       <div className='b-video'>
@@ -20,14 +29,6 @@ const ShowCard = (props) => (
   </Link>
 )
 
-const {string} = React.PropTypes
+ShowCardBox.propTypes = PropTypes
 
-ShowCard.propTypes = {
-  poster: string.isRequired,
-  title: string.isRequired,
-  year: string.isRequired,
-  description: string,
-  imdbID: string.isRequired
-}
-
-module.exports = ShowCard
+module.exports = ShowCardBox

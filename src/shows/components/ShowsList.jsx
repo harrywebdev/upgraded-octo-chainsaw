@@ -1,5 +1,5 @@
 const React = require('react')
-const ShowCard = require('../shows/ShowCard')
+const ShowCardBox = require('./ShowCardBox')
 const {arrayOf, object} = React.PropTypes
 
 const ShowsList = React.createClass({
@@ -17,7 +17,7 @@ const ShowsList = React.createClass({
           return (
             <div key={show.imdbID}>
               <div className='col-lg-3 col-sm-6'>
-                <ShowCard {...show} />
+                <ShowCardBox {...show} />
               </div>
               {clearfix}
             </div>

@@ -1,5 +1,13 @@
 const React = require('react')
 const {Link} = require('react-router')
+const {string} = React.PropTypes
+
+const PropTypes = {
+  poster: string.isRequired,
+  title: string.isRequired,
+  description: string.isRequired,
+  imdbID: string.isRequired
+}
 
 const ShowCardHorizontal = (props) => (
   <div className='h-video row'>
@@ -20,13 +28,6 @@ const ShowCardHorizontal = (props) => (
   </div>
 )
 
-const {string} = React.PropTypes
-
-ShowCardHorizontal.propTypes = {
-  poster: string.isRequired,
-  title: string.isRequired,
-  description: string.isRequired,
-  imdbID: string.isRequired
-}
+ShowCardHorizontal.propTypes = PropTypes
 
 module.exports = ShowCardHorizontal

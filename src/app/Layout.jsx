@@ -4,8 +4,10 @@ const Header = require('./Header')
 const Layout = (props) => (
   <div>
     <Header />
-    <div className='container-fluid'>
-      {props.children}
+    <div className='content-wrapper'>
+      <div className='container'>
+        {props.children}
+      </div>
     </div>
   </div>
 )

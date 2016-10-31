@@ -11,7 +11,13 @@ const CommentsList = (props) => (
     <div className='comments-list'>
       {props.comments.map((comment) => {
         return (
-          <Comment author={comment.author} timestamp={comment.timestamp} text={comment.text} key={comment.id} />
+          <Comment
+            author={comment.author}
+            timestamp={comment.timestamp}
+            text={comment.text}
+            key={comment.id}
+            replies={comment.replies}
+          />
         )
       })}
     </div>

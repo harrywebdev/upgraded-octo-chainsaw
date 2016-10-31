@@ -4,7 +4,15 @@
       "id": 10006,
       "author": "kingPIN",
       "timestamp": "19 hours ago",
-      "text": "I was stuck too. then I started to shoot everything in Doom."
+      "text": "I was stuck too. then I started to shoot everything in Doom.",
+      "replies": [
+        {
+          "id": 10007,
+          "author": "MasterBlaster",
+          "timestamp": "2 hours ago",
+          "text": "All your base belong to us etc etc"
+        }
+      ]
     },
     {
       "id": 10005,
@@ -16,13 +24,23 @@
       "id": 10004,
       "author": "Isleifna",
       "timestamp": "4 days ago",
-      "text": "Omg thank you so much, idk how I couldn't figure out that master trap"
-    },
-    {
-      "id": 10003,
-      "author": "Mark",
-      "timestamp": "6 days ago",
-      "text": "He looks like Rhett with the most glorious wig ever"
+      "text": "Omg thank you so much, idk how I couldn't figure out that master trap",
+      "replies": [
+        {
+          "id": 10003,
+          "author": "Mark",
+          "timestamp": "6 days ago",
+          "text": "He looks like Rhett with the most glorious wig ever",
+          "replies": [
+            {
+              "id": 10008,
+              "author": "topkek",
+              "timestamp": "1 hour ago",
+              "text": "I got that reference zomfg"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 10002,

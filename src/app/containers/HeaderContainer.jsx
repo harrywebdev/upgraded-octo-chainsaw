@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actions from '../actions'
 import Header from '../components/Header'
+import {hashHistory} from 'react-router'
 
 const {string, func} = React.PropTypes
 
@@ -14,9 +15,13 @@ const HeaderContainer = React.createClass({
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
   },
+  goToSearch (event) {
+    event.preventDefault()
+    hashHistory.push('/')
+  },
   render () {
     return (
-      <Header searchTerm={this.props.searchTerm} handleSearchTermEvent={this.handleSearchTermEvent} />
+      <Header searchTerm={this.props.searchTerm} handleSearchTermEvent={this.handleSearchTermEvent} handleSearchSubmitEvent={this.goToSearch} />
     )
   }
 })

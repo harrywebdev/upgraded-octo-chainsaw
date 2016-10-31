@@ -6,7 +6,8 @@ const {string, func} = React.PropTypes
 const Header = React.createClass({
   propTypes: {
     searchTerm: string,
-    handleSearchTermEvent: func
+    handleSearchTermEvent: func,
+    handleSearchSubmitEvent: func
   },
   render () {
     return (
@@ -20,7 +21,7 @@ const Header = React.createClass({
                 </div>
                 <div className='visible-xs visible-sm clearfix'></div>
                 <div className='col-lg-6 col-sm-8 col-xs-12'>
-                  <form method='post'>
+                  <form onSubmit={this.props.handleSearchSubmitEvent}>
                     <div className='topsearch'>
                       <div className='input-group'>
                         <span className='input-group-addon' id='sizing-addon2'><i className='fa fa-search' /></span>

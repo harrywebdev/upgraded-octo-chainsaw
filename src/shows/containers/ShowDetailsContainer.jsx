@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import ShowDetails from '../components/ShowDetails'
+import {comments} from '../../../data/comments'
 
 const {arrayOf, object} = React.PropTypes
 
@@ -12,15 +13,18 @@ const ShowDetailsContainer = React.createClass({
   },
   getInitialState () {
     return {
-      omdbData: {}
+      omdbData: {},
+      comments: []
     }
   },
   componentDidMount () {
     this.fetchRating()
+    this.fetchComments()
   },
   componentDidUpdate (prevProps) {
     if (prevProps.params.id !== this.props.params.id) {
       this.fetchRating()
+      this.fetchComments()
     }
   },
   fetchRating () {
@@ -31,6 +35,10 @@ const ShowDetailsContainer = React.createClass({
       .catch((error) => {
         console.error('Error fetching IMDB rating', error)
       })
+  },
+  fetchComments () {
+    // TODO: API call for comments, now just JSON
+    this.setState({comments: comments})
   },
   getCurrentShow (id) {
     return this.props.shows.filter((show) => show.imdbID === id)[0]
@@ -45,6 +53,7 @@ const ShowDetailsContainer = React.createClass({
     const {title, description, year, trailer} = this.getCurrentShow(this.props.params.id)
     const nextShows = this.getNextShows(this.props.params.id)
     const recommendedShows = this.getRecommendedShows(this.props.params.id)
+    const comments = this.state.comments
 
     let rating
     if (this.state.omdbData.imdbRating) {
@@ -60,6 +69,7 @@ const ShowDetailsContainer = React.createClass({
         rating={rating}
         nextShows={nextShows}
         recommendedShows={recommendedShows}
+        comments={comments}
       />
     )
   }

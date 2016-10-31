@@ -1,6 +1,7 @@
 import React from 'react'
 import BodyClassName from 'react-body-classname'
 import SidebarShows from './SidebarShows'
+import CommentsList from '../../comments/components/CommentsList'
 
 const {arrayOf, object, string} = React.PropTypes
 
@@ -12,7 +13,8 @@ const ShowDetails = React.createClass({
     trailer: string.isRequired,
     rating: string,
     nextShows: arrayOf(object).isRequired,
-    recommendedShows: arrayOf(object).isRequired
+    recommendedShows: arrayOf(object).isRequired,
+    comments: arrayOf(object).isRequired
   },
   getInitialState () {
     return {
@@ -65,6 +67,8 @@ const ShowDetails = React.createClass({
                   728 x 90
                 </div>
               </div>
+
+              <CommentsList comments={this.props.comments} />
 
             </div>
           </div>
